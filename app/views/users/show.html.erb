@@ -1,0 +1,30 @@
+<p>
+  <b>Event:</b>
+  <%=h @user.event.title %>
+</p>
+<p>
+  <b>Name:</b>
+  <%=h @user.name %>
+</p>
+<p>
+  <b>Att:</b>
+  <% if @user.att == 1 then %>
+  ◯
+  <% elsif @user.att == 0 then %>
+  ☓
+  <% else %>
+  -
+  <% end %>
+  <br/>
+<% if @user.event.isfix == false then %>
+<% form_for @user, :url => {:action => 'attendance'} do |f| %>
+  <label><%= f.radio_button :att, "1" %>出席</label>
+  <label><%= f.radio_button :att, "0" %>欠席</label>
+  <label><%= f.radio_button :att, "-1" %>未入力</label></br></br>
+  <%= f.submit"Update" %>
+<% end %>
+<% end %>
+</p>
+
+<%= link_to 'Back', event_path(@user.event_id) %>
+<%= link_to "Home", events_path %>

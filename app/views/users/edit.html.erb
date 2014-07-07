@@ -1,0 +1,17 @@
+<h1>Editing user</h1>
+
+<%=h "Current Name:#{@user.name}" %>
+<% form_for @user, :url => {:action => 'update'} do |f| %>
+
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', organizer_event_path(@user.event_id) %>

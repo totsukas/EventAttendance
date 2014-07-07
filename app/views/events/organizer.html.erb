@@ -1,0 +1,36 @@
+<p>
+  <b>Title:</b>
+  <%=h @event.title %>
+</p>
+<p>
+  ◯:<%= @event.users.present.count %>  ☓:<%= @event.users.absence.count %>  blank:<%= @event.users.blank.count %>  total:<%= @event.users.count %>
+</p>
+<table>
+<% @event.users.each do |user| %>
+<tr>
+<td>
+	<% if user.att == 1 then %>
+	(◯)
+	<% elsif user.att == 0 then %>
+	(☓)
+	<% else %>
+	(-)
+	<% end %>
+</td>
+<td><%= link_to user.name, "/events/#{user.event_id}/users/#{user.id}/organizer" %></td>
+<td><%= link_to 'Change Name', edit_event_user_path(user.event.id, user.id) %></td>
+<td><%= link_to 'Delete', event_user_path(user.event_id, user.id), :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+<% end %>
+
+</table>
+
+</br>
+
+<% form_for [@event, @event.users.build] do |f| %>
+<%= f.text_field :name %>
+<%= f.submit"Create User" %>
+<% end %>
+
+</br>
+<%= link_to 'Back', organizer_index_path %>

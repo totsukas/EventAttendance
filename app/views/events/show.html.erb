@@ -1,0 +1,19 @@
+<p>
+  <b>Title:</b>
+  <%=h @event.title %>
+</p>
+<p>
+  ◯:<%= @event.users.present.count %>  ☓:<%= @event.users.absence.count %>  blank:<%= @event.users.blank.count %>  total:<%= @event.users.count %>
+</p>
+<table>
+<% @event.users.each do |user| %>
+<tr>
+<td><%= link_to user.name, event_user_path(user.event_id, user.id) %></td>
+<% end %>
+
+</table>
+
+</br>
+
+</br>
+<%= link_to 'Back', events_path %>

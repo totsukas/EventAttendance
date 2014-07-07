@@ -1,0 +1,29 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <% if event.isfix then %>
+    <td>[fixed]</td>
+    <% else %>
+    <td>[---]</td>
+    <% end %>
+    <td><%=h link_to event.title, organizer_event_path(event) %></td>
+	<td>(<%= event.users.present.count %>/<%= event.users.count %>)(blank:<%= event.users.blank.count %>)</td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Copy', copy_event_path(event) %></td>
+    <td><%= link_to 'Fix', fix_event_path(event) %></td>
+    <td><%= link_to 'Unfix', unfix_event_path(event) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event', new_event_path %>
+<%= link_to 'Back', events_path %>

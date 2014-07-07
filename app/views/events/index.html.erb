@@ -1,0 +1,15 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h link_to event.title, event %></td>
+	<td>(<%= event.users.present.count %>/<%= event.users.count %>)(blank:<%= event.users.blank.count %>)</td>
+  </tr>
+<% end %>
+</table>
+
