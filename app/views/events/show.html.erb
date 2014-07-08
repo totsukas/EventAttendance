@@ -6,16 +6,17 @@
 Att: <%= @event.users.present.count %>/<%= @event.users.count %>
 </p>
 <table>
-<% @event.users.each do |user| %>
+<% users_sort = @event.users.sort{|aa,bb| aa.yomi <=> bb.yomi} %>
+<% users_sort.each do |user| %>
 <tr>
+<td><%= link_to user.name, event_user_path(user.event_id, user.id) %></td>
 <td>
 	<% if user.att == 1 then %>
 	[◯]
 	<% else %>
-	[-]
+
 	<% end %>
 </td>
-<td><%= link_to user.name, event_user_path(user.event_id, user.id) %></td>
 <% end %>
 
 </table>

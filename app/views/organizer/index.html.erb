@@ -14,7 +14,7 @@
     <% end %>
     <td><%=h link_to event.title, organizer_event_path(event) %></td>
 	<td>(<%= event.users.present.count %>/<%= event.users.count %>)(blank:<%= event.users.blank.count %>)</td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Edit Title', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to 'Copy', copy_event_path(event) %></td>
     <td><%= link_to 'Fix', fix_event_path(event) %></td>

@@ -6,7 +6,8 @@
   ◯:<%= @event.users.present.count %>  ☓:<%= @event.users.absence.count %>  blank:<%= @event.users.blank.count %>  total:<%= @event.users.count %>
 </p>
 <table>
-<% @event.users.each do |user| %>
+<% users_sort = @event.users.sort{|aa,bb| aa.yomi <=> bb.yomi} %>
+<% users_sort.each do |user| %>
 <tr>
 <td>
 	<% if user.att == 1 then %>
@@ -18,7 +19,7 @@
 	<% end %>
 </td>
 <td><%= link_to user.name, "/events/#{user.event_id}/users/#{user.id}/organizer" %></td>
-<td><%= link_to 'Change Name', edit_event_user_path(user.event.id, user.id) %></td>
+<td><%= link_to 'Edit Name', edit_event_user_path(user.event.id, user.id) %></td>
 <td><%= link_to 'Delete', event_user_path(user.event_id, user.id), :confirm => 'Are you sure?', :method => :delete %></td>
 </tr>
 <% end %>
