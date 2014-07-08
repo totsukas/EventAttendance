@@ -3,11 +3,18 @@
   <%=h @event.title %>
 </p>
 <p>
-  ◯:<%= @event.users.present.count %>  ☓:<%= @event.users.absence.count %>  blank:<%= @event.users.blank.count %>  total:<%= @event.users.count %>
+Att: <%= @event.users.present.count %>/<%= @event.users.count %>
 </p>
 <table>
 <% @event.users.each do |user| %>
 <tr>
+<td>
+	<% if user.att == 1 then %>
+	[◯]
+	<% else %>
+	[-]
+	<% end %>
+</td>
 <td><%= link_to user.name, event_user_path(user.event_id, user.id) %></td>
 <% end %>
 

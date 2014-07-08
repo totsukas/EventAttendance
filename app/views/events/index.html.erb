@@ -8,7 +8,7 @@
 <% @events.each do |event| %>
   <tr>
     <td><%=h link_to event.title, event %></td>
-	<td>(<%= event.users.present.count %>/<%= event.users.count %>)(blank:<%= event.users.blank.count %>)</td>
+	<td>(<%= event.users.present.count %>/<%= event.users.count %>)</td>
   </tr>
 <% end %>
 </table>

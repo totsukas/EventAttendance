@@ -10,11 +10,11 @@
 <tr>
 <td>
 	<% if user.att == 1 then %>
-	(◯)
+	[◯]
 	<% elsif user.att == 0 then %>
-	(☓)
+	[☓]
 	<% else %>
-	(-)
+	[-]
 	<% end %>
 </td>
 <td><%= link_to user.name, "/events/#{user.event_id}/users/#{user.id}/organizer" %></td>
