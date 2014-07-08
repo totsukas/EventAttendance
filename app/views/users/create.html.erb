@@ -1,7 +1,7 @@
-<h1>Editing user</h1>
+<h1>Create user</h1>
 
-<%=h "Current Name:#{@user.name}" %>
-<% form_for @user, :url => {:action => 'update'} do |f| %>
+
+<% form_for @user, :url => {:action => 'create'} do |f| %>
 
   <%= f.error_messages %>
 
@@ -13,7 +13,7 @@
   	<%= f.label :yomi %><br />
     <%= f.text_field :yomi %>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Create' %>
   </p>
 <% end %>
 

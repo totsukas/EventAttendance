@@ -47,8 +47,16 @@ class UsersController < ApplicationController
     @event = Event.find(params[:event_id])
     @user = @event.users.create(params[:user])
     #@user.att = -1
-    @user.save
-    redirect_to organizer_event_path(@event.id)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to(organizer_event_path(@event.id), :notice => 'User was successfully created.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "create" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+    
   end
 
   # PUT /users/1

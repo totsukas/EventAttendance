@@ -92,6 +92,7 @@ class EventsController < ApplicationController
       @copy_user = User.new
       @copy_user = @copy_event.users.create(@copy_user.id)
       @copy_user.name = user.name
+      @copy_user.yomi = user.yomi
       #@copy_user.att = -1
       @copy_user.save
     end

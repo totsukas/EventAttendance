@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20140706095436) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
+    t.string   "yomi"
     t.integer  "att",        :default => -1
     t.integer  "event_id"
     t.datetime "created_at"

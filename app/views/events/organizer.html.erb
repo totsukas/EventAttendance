@@ -28,8 +28,17 @@
 </br>
 
 <% form_for [@event, @event.users.build] do |f| %>
-<%= f.text_field :name %>
-<%= f.submit"Create User" %>
+<table>
+<tr>
+<td>Name:</td><td><%= f.text_field :name %></td>
+</tr>
+<tr>
+<td>Yomi:</td><td><%= f.text_field :yomi %></td>
+</tr>
+<tr>
+<td><%= f.submit"Create User" %></td>
+</tr>
+</table>
 <% end %>
 
 </br>
